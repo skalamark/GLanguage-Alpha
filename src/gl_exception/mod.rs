@@ -51,4 +51,11 @@ impl Exception {
 		result.push_str(error_details);
 		result
 	}
+
+	pub fn illegal_char(&mut self) {
+		println!(
+			"{}",
+			self.generate_exception_string("SyntaxError: Invalid character in identifier")
+		);
+	}
 }
