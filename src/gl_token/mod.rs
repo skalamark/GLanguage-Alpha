@@ -5,7 +5,7 @@ use crate::gl_tokens::Tokens;
 
 pub struct Token {
 	pub typer: Tokens,
-	pub linetext: &'static str,
+	pub linetext: String,
 	pub position_start: TokenPosition,
 	pub position_end: TokenPosition,
 }
