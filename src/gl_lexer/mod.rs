@@ -3,6 +3,7 @@
 use crate::gl_env::Env;
 use crate::gl_token::Token;
 use crate::gl_token_position::TokenPosition;
+use crate::gl_tokens::{Tokens, SPACES};
 
 pub struct Lexer {
 	chars: Vec<char>,
@@ -56,5 +57,18 @@ impl Lexer {
 	fn advance(&mut self) {
 		self.position.column += 1;
 		self.advance_char();
+	}
+
+	fn build_new_token(
+		&mut self,
+		typer: Tokens,
+		pos_start: TokenPosition,
+	) -> Token {
+		Token {
+			typer,
+			linetext: String::from(&self.current_linetext),
+			position_start: pos_start,
+			position_end: self.position.copy(),
+		}
 	}
 }
