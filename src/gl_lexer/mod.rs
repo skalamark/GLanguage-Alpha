@@ -33,4 +33,28 @@ impl Lexer {
 		let tokens: Vec<Token> = Vec::new();
 		Lexer { chars, linestext, current_char, current_linetext, position, tokens }
 	}
+
+	fn advance_char(&mut self) {
+		if self.chars.len() > 0 {
+			self.current_char = self.chars.remove(0).to_string();
+		} else {
+			self.current_char = String::new();
+		}
+	}
+
+	fn advance_linetext(
+		&mut self,
+		env: &mut Env,
+	) {
+		env.lineno += 1;
+		self.position.column = 0;
+		if self.linestext.len() > 0 {
+			self.current_linetext = self.linestext.remove(0);
+		}
+	}
+
+	fn advance(&mut self) {
+		self.position.column += 1;
+		self.advance_char();
+	}
 }
