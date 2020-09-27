@@ -80,4 +80,14 @@ impl Lexer {
 		let token = self.build_new_token(typer, pos_start);
 		self.tokens.push(token);
 	}
+
+	fn illegal_char(
+		&mut self,
+		env: &mut Env,
+	) {
+		let pos_start: TokenPosition = self.position.copy();
+		let token: Token = self.build_new_token(Tokens::EOF, pos_start);
+		token.illegal_char(env);
+		self.advance_linetext(env);
+	}
 }
