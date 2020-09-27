@@ -71,4 +71,13 @@ impl Lexer {
 			position_end: self.position.copy(),
 		}
 	}
+
+	fn add_build_new_token(
+		&mut self,
+		typer: Tokens,
+		pos_start: TokenPosition,
+	) {
+		let token = self.build_new_token(typer, pos_start);
+		self.tokens.push(token);
+	}
 }
