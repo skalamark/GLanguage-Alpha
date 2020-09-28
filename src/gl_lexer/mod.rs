@@ -90,4 +90,35 @@ impl Lexer {
 		token.illegal_char(env);
 		self.advance_linetext(env);
 	}
+
+	fn make_next_token(
+		&mut self,
+		env: &mut Env,
+	) -> bool {
+		let pos_start: TokenPosition = self.position.copy();
+
+		if self.current_char.is_empty() {
+			if self.tokens.len() > 0 {
+				self.add_build_new_token(
+					Tokens::EOF,
+					self.tokens[self.tokens.len() - 1].position_end.copy(),
+				);
+			} else {
+				self.add_build_new_token(Tokens::EOF, pos_start);
+			}
+			return false;
+		} else if SPACES.contains(&self.current_char.as_str()) {
+			if self.current_char == "\n" {
+				self.advance_linetext(env);
+				self.advance_char();
+			} else {
+				self.advance();
+			}
+		} else {
+			self.illegal_char(env);
+			return true;
+		}
+
+		self.make_next_token(env)
+	}
 }
