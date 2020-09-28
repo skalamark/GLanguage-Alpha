@@ -18,7 +18,7 @@ impl Token {
 		env: &Env,
 	) {
 		let mut exception: Exception = Exception::new(
-			&env.filename.to_string(),
+			&env.filename,
 			&self.linetext,
 			self.position_start.column,
 			self.position_end.column,
