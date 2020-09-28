@@ -7,18 +7,18 @@ Language of script - alpha
 
 ## Components:
 - [ ] Ast
-- [ ] Env
+- [x] Env
 - [ ] Eval
-- [ ] Exception
-  - [ ] IllegalChar
+- [x] Exception
+  - [x] IllegalChar
   - [ ] InvalidSyntax
   - [ ] ExpectedChar
   - [ ] RunTime
-- [ ] Interpreter
-- [ ] Lexer
+- [x] Interpreter
+- [x] Lexer
 - [ ] Object
 - [ ] Parser
 - [ ] Statement
-- [ ] Token
-- [ ] TokenPosition
-- [ ] Tokens
+- [x] Token
+- [x] TokenPosition
+- [x] Tokens
