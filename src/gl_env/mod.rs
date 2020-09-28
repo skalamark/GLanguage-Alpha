@@ -1,6 +1,6 @@
 // Env
 
 pub struct Env {
-	pub filename: &'static str,
+	pub filename: String,
 	pub lineno: usize,
 }
