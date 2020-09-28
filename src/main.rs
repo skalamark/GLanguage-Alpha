@@ -17,6 +17,8 @@ fn main() {
 
 	// Check which command was called
 	match matches.subcommand() {
+		("cmd", Some(sub_cmd)) => cmd(sub_cmd.value_of("codetext").expect("")),
+		("run", Some(sub_run)) => run(sub_run.value_of("file").expect("")),
 		_ => (),
 	}
 }
