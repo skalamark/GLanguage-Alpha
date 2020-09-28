@@ -45,7 +45,9 @@ impl Exception {
 		}
 
 		let mut result: String = String::new();
-		result.push_str(format!("  File \"{}\", line {}\n", &self.filename, self.lineno).as_str());
+		result.push_str(
+			format!("  File \"{}\", line {}\n", &self.filename, self.lineno + 1).as_str(),
+		);
 		result.push_str(format!("    {}\n", self.linetext).as_str());
 		result.push_str(format!("    {}{}\n", spaces, pows).as_str());
 		result.push_str(error_details);
