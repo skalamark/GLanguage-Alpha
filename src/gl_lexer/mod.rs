@@ -121,4 +121,14 @@ impl Lexer {
 
 		self.make_next_token(env)
 	}
+
+	pub fn run(
+		&mut self,
+		env: &mut Env,
+	) -> bool {
+		if self.make_next_token(env) {
+			return true;
+		}
+		false
+	}
 }
