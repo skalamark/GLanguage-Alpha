@@ -12,4 +12,15 @@ impl Interpreter {
 		let env: Env = Env { filename: filename.to_string(), lineno: 0 };
 		Interpreter { env }
 	}
+
+	pub fn run_codetext(
+		&mut self,
+		codetext: &str,
+	) -> bool {
+		let mut lexer: Lexer = Lexer::new(codetext, &self.env);
+		if lexer.run(&mut self.env) {
+			return true;
+		}
+		false
+	}
 }
